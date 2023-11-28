@@ -6,6 +6,11 @@ using System.Threading.Tasks;
 
 namespace ImmutableCollections.Vectors
 {
+
+    /// <summary>
+    /// An ordered immutable collection of T.
+    /// </summary>
+    /// <typeparam name="T">The collection type.</typeparam>
     public struct MergeVector<T>
     {
         interface IVec

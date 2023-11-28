@@ -6,10 +6,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Benchmarks
+namespace Tests
 {
     [TestClass()]
-    public class BenchmarkVectors
+    public class TestVectors
     {
         const int SIZE = 1_000_000;
 

@@ -2,4 +2,4 @@
 using BenchmarkDotNet.Running;
 using Benchmarks;
 
-BenchmarkRunner.Run<BenchmarkVectors>();
+BenchmarkRunner.Run<Benchmarks.Vector.BenchmarkMergeVector>();
