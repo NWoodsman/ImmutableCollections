@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ImmutableCollections.Vectors
 {
-    struct MergeVector<T>
+    public struct MergeVector<T>
     {
         interface IVec
         {

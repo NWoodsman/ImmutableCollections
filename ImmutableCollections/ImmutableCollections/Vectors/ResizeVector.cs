@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ImmutableCollections.Vectors
 {
-    struct ResizeVector<T>
+    public struct ResizeVector<T>
     {
         static int BitsPerLevel = 5; // branching factor = 2^BitsPerLevel
         static int MaxNodeSize = 1 << BitsPerLevel;
