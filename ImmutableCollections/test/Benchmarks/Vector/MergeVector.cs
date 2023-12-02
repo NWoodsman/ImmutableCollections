@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Benchmarks.Vector
 {
-    public class BenchmarkMergeVector
+    public class MergeVector
     {
         const int SIZE = 1_000_000;
 

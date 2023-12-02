@@ -10,10 +10,10 @@ using System.Threading.Tasks;
 namespace Benchmarks
 {
     [MemoryDiagnoser]
-    public class BenchmarkVectors
+    public class Vectors
     {
-        const int SIZE = 1_000_000;
-        const int HALF_SIZE = 500_000;
+        const int SIZE = 1000;
+        const int HALF_SIZE = 500;
 
         [Benchmark]
         public void ms_mutable_list()
