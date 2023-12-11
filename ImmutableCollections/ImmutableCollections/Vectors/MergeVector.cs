@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,8 +12,26 @@ namespace ImmutableCollections.Vectors
     /// An ordered immutable collection of T.
     /// </summary>
     /// <typeparam name="T">The collection type.</typeparam>
-    public struct MergeVector<T>
+    public readonly record struct MergeVector<T>:IReadOnlyList<T>
     {
+        private readonly int count { get; init; }
+        private readonly Vector state { get; init; }
+        public int Count => count;
+
+        public T this[int index] => state.Lookup(index);
+
+        internal T Lookup(int i) => state.Lookup(i);
+
+        public MergeVector<T> Add(T item) => this with { state = state.Add(item), count = this.count+1 };
+        internal MergeVector<T> Set(int i, T item ) => this with { state = state.Set(i, item) };
+
+        public IEnumerator<T> GetEnumerator()
+        {
+            for(int i =0; i<Count;i++) yield return this[i];
+        }
+
+        IEnumerator IEnumerable.GetEnumerator() => this.GetEnumerator();
+
         interface IVec
         {
             T Lookup(uint i);
@@ -180,6 +199,11 @@ namespace ImmutableCollections.Vectors
             public Vector Set(int i, T x) { throw new IndexOutOfRangeException(); }
         }
 
-        public static Vector Empty = new EmptyVector();
+        public static MergeVector<T> Empty => new MergeVector<T>
+        {
+            state = new EmptyVector(),
+            count = 0,
+        };
+
     }
 }

@@ -13,11 +13,29 @@ namespace Tests.Vector
     {
         const int SIZE = 1_000_000;
 
-        [TestMethod()]
-        public void test_init()
+        private MergeVector<int> testVector()
         {
-            var ms_list = ImmutableList<int>.Empty;
-            for(int i=0;i<SIZE;i++) ms_list = ms_list.Add(i);  
+            var vec = MergeVector<int>.Empty;
+            for (int i = 0; i < SIZE; i++) vec = vec.Add(i);
+
+            return vec;
+        }
+
+        [TestMethod()]
+        public void test_add()
+        {
+            var vec =MergeVector<int>.Empty;
+            for(int i=0;i<SIZE;i++) vec = vec.Add(i);
+
+            int counter = 0;
+
+            foreach(var i in vec)
+            {
+                Assert.IsTrue(i == counter);
+                counter++;
+            }
+
+            Assert.IsTrue(vec.Count == SIZE);
         }
 
     }
